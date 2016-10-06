@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu:schema xmlns:menu="http://www.w3.org/2001/XMLSchema"> 
+
+<menu:simpleType name="НазваниеType">
+	<menu:restriction base = "menu:string">
+	</menu:restriction>
+
+</menu:simpleType>
+
+<menu:simpleType name="ОписаниеType">
+	<menu:restriction base = "menu:string">
+		<menu:enumeration value="с помидорами"/>
+		<menu:enumeration value="с чесноком"/>
+		<menu:enumeration value="с орехами"/>
+		<menu:enumeration value="с курицей"/>
+		<menu:enumeration value="с грибами"/>
+		<menu:enumeration value="отварные"/>
+		<menu:enumeration value="жареные"/>
+	</menu:restriction>
+</menu:simpleType>
+
+<menu:simpleType name="ПорцияType">
+	<menu:restriction base = "menu:string">
+	</menu:restriction>
+
+</menu:simpleType>
+
+<menu:simpleType name="ЦенаType">
+	<menu:restriction base = "menu:string">
+	</menu:restriction>
+</menu:simpleType>
+
+<menu:element name="Описание">
+	
+        <menu:complexType mixed="true">
+			<menu:sequence>
+			<menu:element name = "Доп_описание" type = "ОписаниеType" minOccurs="0" maxOccurs="unbounded"/>
+			</menu:sequence>
+		</menu:complexType>
+</menu:element>
+
+<menu:element name="Холодные_закуски">
+	
+        <menu:complexType>
+			<menu:sequence>
+			<menu:element name = "Название" type = "НазваниеType" />
+			<menu:element ref = "Описание" />
+			<menu:element name = "Порция" type = "ПорцияType"/>
+			<menu:element name = "Цена" type = "ЦенаType"/>
+			</menu:sequence>
+		<menu:attribute name = "id" type = "menu:int" use="required" />
+		</menu:complexType>
+</menu:element>
+
+<menu:element name="Горячие_закуски">
+	
+        <menu:complexType>
+			<menu:sequence>
+			<menu:element name = "Название" type = "НазваниеType" />
+			<menu:element ref = "Описание" />
+			<menu:element name = "Порция" type = "ПорцияType"/>
+			<menu:element name = "Цена" type = "ЦенаType"/>
+			</menu:sequence>
+		<menu:attribute name = "id" type = "menu:int" use="required" />
+		</menu:complexType>
+</menu:element>
+
+<menu:element name="Завтраки">
+	
+        <menu:complexType>
+			<menu:sequence>
+			<menu:element name = "Название" type = "НазваниеType" />
+			<menu:element ref = "Описание" />
+			<menu:element name = "Порция" type = "ПорцияType"/>
+			<menu:element name = "Цена" type = "ЦенаType"/>
+			</menu:sequence>
+		<menu:attribute name = "id" type = "menu:int" use="required" />
+		</menu:complexType>
+</menu:element>
+
+<menu:element name="Меню">
+	
+        <menu:complexType>
+			<menu:choice maxOccurs="unbounded">
+			<menu:element ref = "Холодные_закуски" />
+			<menu:element ref = "Горячие_закуски" />
+			<menu:element ref = "Завтраки" />
+			</menu:choice>
+		</menu:complexType>
+</menu:element>
+
+</menu:schema>
