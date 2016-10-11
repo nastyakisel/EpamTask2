@@ -61,9 +61,9 @@ public class DomExecute {
 			menu.getHotSnacks().add(snack);
 		}
 		
-		NodeList breakfast = root.getElementsByTagName("Горячие_закуски");
+		NodeList breakfast = root.getElementsByTagName("Завтраки");
 		
-		for (int i = 0; i < hotSnacks.getLength(); i++) {
+		for (int i = 0; i < breakfast.getLength(); i++) {
 			snack = new Snack();
 			Element breakfastElement = (Element) breakfast.item(i);
 			snack.setId(breakfastElement.getAttribute("id"));
