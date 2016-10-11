@@ -30,11 +30,56 @@ public class DomExecute {
 			Element coldSnacksElement = (Element) coldSnacks.item(i);
 			snack.setId(coldSnacksElement.getAttribute("id"));
 			
-			//snack.setName(getSingleChild(coldSnacksElement, "name").getTextContent().trim());
+			snack.setName(getSingleChild(coldSnacksElement, "Название").getTextContent().trim());
+			snack.setPortion(getSingleChild(coldSnacksElement, "Порция").getTextContent().trim());
+			snack.setPrice(getSingleChild(coldSnacksElement, "Цена").getTextContent().trim());
+			
+			String description = getSingleChild(coldSnacksElement, "Описание").getTextContent().trim();
+			Description descr = new Description();
+			descr.setValue(description);
+			snack.setDescription(descr);
+			
 			menu.getColdSnacks().add(snack);
 		}
 		
-		System.out.println("Menu:\n" + menu);
+		NodeList hotSnacks = root.getElementsByTagName("Горячие_закуски");
+		
+		for (int i = 0; i < hotSnacks.getLength(); i++) {
+			snack = new Snack();
+			Element hotSnacksElement = (Element) hotSnacks.item(i);
+			snack.setId(hotSnacksElement.getAttribute("id"));
+			
+			snack.setName(getSingleChild(hotSnacksElement, "Название").getTextContent().trim());
+			snack.setPortion(getSingleChild(hotSnacksElement, "Порция").getTextContent().trim());
+			snack.setPrice(getSingleChild(hotSnacksElement, "Цена").getTextContent().trim());
+			
+			String description = getSingleChild(hotSnacksElement, "Описание").getTextContent().trim();
+			Description descr = new Description();
+			descr.setValue(description);
+			snack.setDescription(descr);
+			
+			menu.getHotSnacks().add(snack);
+		}
+		
+		NodeList breakfast = root.getElementsByTagName("Горячие_закуски");
+		
+		for (int i = 0; i < hotSnacks.getLength(); i++) {
+			snack = new Snack();
+			Element breakfastElement = (Element) breakfast.item(i);
+			snack.setId(breakfastElement.getAttribute("id"));
+			
+			snack.setName(getSingleChild(breakfastElement, "Название").getTextContent().trim());
+			snack.setPortion(getSingleChild(breakfastElement, "Порция").getTextContent().trim());
+			snack.setPrice(getSingleChild(breakfastElement, "Цена").getTextContent().trim());
+			
+			String description = getSingleChild(breakfastElement, "Описание").getTextContent().trim();
+			Description descr = new Description();
+			descr.setValue(description);
+			snack.setDescription(descr);
+			
+			menu.getBreakfasts().add(snack);
+		}
+		System.out.println(menu);
 		
 	}
 	
